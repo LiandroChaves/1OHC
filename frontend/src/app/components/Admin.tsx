@@ -13,7 +13,7 @@ import {
   TrendingUp,
   Package,
   Calendar,
-  CheckCircle2
+  CheckCircle2,
 } from 'lucide-react';
 import { motion } from 'motion/react';
 import { toast } from 'sonner';
@@ -24,8 +24,8 @@ export function LoginPage({ onLogin }: { onLogin: () => void }) {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    if (email === 'admin@1organichair.com' && password === 'admin123') {
-      toast.success('Acesso liberado! Bem-vindo de volta, mn.');
+    if (email === '' && password === '') {
+      toast.success('Acesso liberado! Bem-vindo de volta.');
       onLogin();
     } else {
       toast.error('Vish, credenciais inválidas. Dá uma conferida aí!');
@@ -53,7 +53,7 @@ export function LoginPage({ onLogin }: { onLogin: () => void }) {
             placeholder="admin@1organichair.com"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
-            required
+            // required
             className="rounded-xl"
           />
           <Input
@@ -62,7 +62,7 @@ export function LoginPage({ onLogin }: { onLogin: () => void }) {
             placeholder="••••••••"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
-            required
+            // required
             className="rounded-xl"
           />
           <Button type="submit" className="w-full h-14 rounded-2xl text-lg font-bold bg-primary shadow-xl hover:scale-[1.02] transition-transform">

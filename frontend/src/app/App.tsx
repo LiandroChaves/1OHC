@@ -17,7 +17,14 @@ export default function App() {
 
   const renderPage = () => {
     if (isAdminLoggedIn && currentPage === 'admin') {
-      return <AdminDashboard onLogout={() => setIsAdminLoggedIn(false)} />;
+      return (
+        <AdminDashboard
+          onLogout={() => {
+            setIsAdminLoggedIn(false);
+            setCurrentPage('home');
+          }}
+        />
+      );
     }
 
     switch (currentPage) {
@@ -29,11 +36,11 @@ export default function App() {
         return <ProductsPage />;
       case 'login':
         return (
-          <LoginPage 
+          <LoginPage
             onLogin={() => {
               setIsAdminLoggedIn(true);
               setCurrentPage('admin');
-            }} 
+            }}
           />
         );
       case 'admin':
@@ -50,13 +57,13 @@ export default function App() {
     <ThemeProvider attribute="class" defaultTheme="light">
       <div className="min-h-screen flex flex-col font-sans selection:bg-primary/20">
         <Toaster position="top-center" expand={false} richColors />
-        
+
         {showStandardLayout && <Navbar onNavigate={handleNavigate} />}
-        
+
         <main className="flex-grow">
           {renderPage()}
         </main>
-        
+
         {showStandardLayout && <Footer onNavigate={handleNavigate} />}
       </div>
     </ThemeProvider>

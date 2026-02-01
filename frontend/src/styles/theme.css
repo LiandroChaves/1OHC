@@ -1,0 +1,202 @@
+@custom-variant dark (&:is(.dark *));
+
+:root {
+  /* Tipografia e Base */
+  --font-size: 16px;
+  --font-weight-medium: 500;
+  --font-weight-normal: 400;
+  --radius: 0.75rem;
+
+  /* Paleta Natureza (Inspirada na Fachada e Conceito Organic) */
+  --background: #fdfcf8;
+  /* Um off-white levemente creme como papel natural */
+  --foreground: #2d362e;
+  /* Verde quase preto para leitura confortável */
+
+  --card: #ffffff;
+  --card-foreground: #2d362e;
+
+  --popover: #ffffff;
+  --popover-foreground: #2d362e;
+
+  /* Cores de Destaque */
+  --primary: #3a5a40;
+  /* Verde Floresta (representando o orgânico) */
+  --primary-foreground: #fdfcf8;
+
+  --secondary: #b08d57;
+  /* Tom de madeira da fachada da loja */
+  --secondary-foreground: #ffffff;
+
+  --muted: #e9edc9;
+  /* Verde oliva bem clarinho para detalhes neutros */
+  --muted-foreground: #586b5a;
+
+  --accent: #a3b18a;
+  /* Verde sábia (combina com o tapete/grama) */
+  --accent-foreground: #2d362e;
+
+  --destructive: #9d4444;
+  --destructive-foreground: #ffffff;
+
+  --border: rgba(58, 90, 64, 0.15);
+  --input: transparent;
+  --input-background: #ffffff;
+  --switch-background: #a3b18a;
+
+  --ring: #3a5a40;
+
+  /* Charts - Seguindo a escala de verdes e terrosos */
+  --chart-1: #3a5a40;
+  --chart-2: #b08d57;
+  --chart-3: #a3b18a;
+  --chart-4: #588157;
+  --chart-5: #dad7cd;
+
+  /* Sidebar */
+  --sidebar: #fdfcf8;
+  --sidebar-foreground: #2d362e;
+  --sidebar-primary: #3a5a40;
+  --sidebar-primary-foreground: #fdfcf8;
+  --sidebar-accent: #e9edc9;
+  --sidebar-accent-foreground: #3a5a40;
+  --sidebar-border: #e2e8f0;
+  --sidebar-ring: #3a5a40;
+}
+
+.dark {
+  /* Modo Escuro - Versão "Noite na Floresta" */
+  --background: #131a14;
+  /* Verde escuro profundo */
+  --foreground: #fdfcf8;
+
+  --card: #1c251e;
+  --card-foreground: #fdfcf8;
+
+  --popover: #1c251e;
+  --popover-foreground: #fdfcf8;
+
+  --primary: #a3b18a;
+  /* Inverte para um verde mais claro no dark */
+  --primary-foreground: #131a14;
+
+  --secondary: #b08d57;
+  /* Mantém o tom madeira */
+  --secondary-foreground: #ffffff;
+
+  --muted: #2d3a30;
+  --muted-foreground: #a3b18a;
+
+  --accent: #344e41;
+  --accent-foreground: #fdfcf8;
+
+  --destructive: #d4183d;
+  --destructive-foreground: #ffffff;
+
+  --border: rgba(255, 255, 255, 0.1);
+  --input: #1c251e;
+  --ring: #a3b18a;
+
+  --sidebar: #131a14;
+  --sidebar-foreground: #fdfcf8;
+  --sidebar-primary: #a3b18a;
+  --sidebar-primary-foreground: #131a14;
+  --sidebar-accent: #2d3a30;
+  --sidebar-accent-foreground: #fdfcf8;
+  --sidebar-border: #2d3a30;
+  --sidebar-ring: #a3b18a;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-input-background: var(--input-background);
+  --color-switch-background: var(--switch-background);
+  --color-ring: var(--ring);
+  --color-chart-1: var(--chart-1);
+  --color-chart-2: var(--chart-2);
+  --color-chart-3: var(--chart-3);
+  --color-chart-4: var(--chart-4);
+  --color-chart-5: var(--chart-5);
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --color-sidebar: var(--sidebar);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-ring: var(--sidebar-ring);
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+  }
+
+  html {
+    font-size: var(--font-size);
+  }
+
+  h1,
+  h2,
+  h3,
+  h4 {
+    font-weight: var(--font-weight-medium);
+    line-height: 1.5;
+    color: var(--primary);
+    /* Títulos em verde dão o toque orgânico */
+  }
+
+  h1 {
+    font-size: var(--text-2xl);
+  }
+
+  h2 {
+    font-size: var(--text-xl);
+  }
+
+  h3 {
+    font-size: var(--text-lg);
+  }
+
+  h4 {
+    font-size: var(--text-base);
+  }
+
+  label,
+  button {
+    font-size: var(--text-base);
+    font-weight: var(--font-weight-medium);
+    line-height: 1.5;
+  }
+
+  input {
+    font-size: var(--text-base);
+    font-weight: var(--font-weight-normal);
+    line-height: 1.5;
+  }
+}
